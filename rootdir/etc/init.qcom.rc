@@ -224,9 +224,6 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # Allow access for WLAN firmware
-    chown system system /sys/module/cnss_common/parameters/bdwlan_file
-
 on fs
     wait /dev/block/bootdevice
     mount_all fstab.qcom
@@ -437,8 +434,7 @@ service config_bt_addr /system/bin/btnvtool -O
 
 service netmgrd /system/bin/netmgrd
     class main
-    user root
-    group root wifi wakelock radio inet
+    group radio system wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service ipacm-diag /system/bin/ipacm-diag
@@ -456,7 +452,7 @@ service ipacm /system/bin/ipacm
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio qcom_diag usb
+    group radio net_raw qcom_diag usb net_admin
     writepid /dev/cpuset/system-background/tasks
 
 service sensors /system/bin/sensors.qcom
@@ -528,7 +524,7 @@ service cnss-daemon /system/bin/cnss-daemon -n -l
 
 service cnss-sh /system/bin/init.cnss.sh
     class core
-    user system
+    user root
     oneshot
 
 on property:sys.shutdown.requested=*
@@ -631,7 +627,7 @@ on property:sys.shutdown.requested=*
 service readmac /system/bin/readmac
     class main
     user root
-    group root qcom_diag
+    group root
     oneshot
 
 service thermal-engine /system/vendor/bin/thermal-engine

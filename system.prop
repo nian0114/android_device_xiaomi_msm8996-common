@@ -37,6 +37,13 @@ ro.btconfig.if=uart
 ro.btconfig.vendor=qcom
 ro.btconfig.chip=QCA6164
 ro.btconfig.dev=/dev/ttyHS0
+ro.qualcomm.bluetooth.ftp=true
+ro.qualcomm.bluetooth.hfp=true
+ro.qualcomm.bluetooth.hsp=true
+ro.qualcomm.bluetooth.map=true
+ro.qualcomm.bluetooth.nap=true
+ro.qualcomm.bluetooth.opp=true
+ro.qualcomm.bluetooth.pbap=true
 
 # Camera
 media.camera.ts.monotonic=0
@@ -69,7 +76,7 @@ ro.sys.display.support=63
 drm.service.enabled=true
 
 # FRP
-ro.frp.pst=/dev/block/bootdevice/by-name/frp
+#ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Graphics
 debug.egl.hw=1
@@ -80,7 +87,7 @@ persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
 persist.sys.wfd.virtual=0
 ro.opengles.version=196610
-ro.sf.lcd_density=480
+ro.sf.lcd_density=420
 sdm.debug.disable_rotator_split=1
 sdm.perf_hint_window=50
 
